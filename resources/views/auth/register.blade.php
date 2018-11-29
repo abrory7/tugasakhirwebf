@@ -12,14 +12,28 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nama') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="nama" type="text" class="form-control{{ $errors->has('nama') ? ' is-invalid' : '' }}" name="nama" value="{{ old('nama') }}" required autofocus>
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('nama'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('nama') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required>
+
+                                @if ($errors->has('username'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('username') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -60,6 +74,23 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="jenisk" class="col-md-4 col-form-label text-md-right">{{ __('Jenis Kelamin') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="jenisk" type="radio" class="form-check-input{{ $errors->has('jenisk') ? ' is-invalid' : '' }}" name="jenisk" value="Laki-Laki" checked>Laki-laki<br>
+                                <input id="jenisk" type="radio" class="form-check-input{{ $errors->has('jenisk') ? ' is-invalid' : '' }}" name="jenisk" value="Perempuan"> Perempuan
+
+                                @if ($errors->has('jenisk'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('jenisk') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="userlevel" id="userlevel" value="3">
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
