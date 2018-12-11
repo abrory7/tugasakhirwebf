@@ -99,30 +99,7 @@
 
 						<div class="blog_section">
 							<div class="section_panel d-flex flex-row align-items-center justify-content-start">
-								<div class="section_title">Don't Miss</div>
-								<div class="section_tags ml-auto">
-									<ul>
-										<li class="active"><a href="category.html">all</a></li>
-										<li><a href="category.html">style hunter</a></li>
-										<li><a href="category.html">vogue</a></li>
-										<li><a href="category.html">health & fitness</a></li>
-										<li><a href="category.html">travel</a></li>
-									</ul>
-								</div>
-								<div class="section_panel_more">
-									<ul>
-										<li>more
-											<ul>
-												<li><a href="category.html">new look 2018</a></li>
-												<li><a href="category.html">street fashion</a></li>
-												<li><a href="category.html">business</a></li>
-												<li><a href="category.html">recipes</a></li>
-												<li><a href="category.html">sport</a></li>
-												<li><a href="category.html">celebrities</a></li>
-											</ul>
-										</li>
-									</ul>
-								</div>
+								<div class="section_title">Thread Terpopuler</div>
 							</div>
 							<div class="section_content">
 								<div class="clearfix">
@@ -138,7 +115,7 @@
 									</div>
 									<!-- Largest Card With Image -->
 									<div class="card">
-										<img class="card-img-top" src="{{ asset('res/images/post_1.jpg') }}" alt="https://unsplash.com/@cjtagupa">
+										<!-- <img class="card-img-top" src="{{ asset('res/images/post_1.jpg') }}" alt="https://unsplash.com/@cjtagupa"> -->
 										<div class="card-body">
 											<div class="card-title"><a href="post.html">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
 											<p class="card-text">Pick the yellow peach that looks like a sunset with its red, orange, and pink coat skin, peel it off with your teeth. Sink them into unripened...</p>
