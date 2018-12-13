@@ -20,10 +20,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('jeniskelamin');
-            $table->text('alamat')->nullable();
-            $table->text('foto')->nullable();
-            $table->text('bio')->nullable();
-            $table->integer('reputasi')->nullable();
+            $table->text('alamat');
+            $table->text('foto');
+            $table->text('bio');
+            $table->integer('reputasi');
             $table->integer('userlevel_id')->unsigned();
             $table->foreign('userlevel_id')->references('id')->on('userlevel');
             $table->rememberToken();
