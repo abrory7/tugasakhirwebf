@@ -33,8 +33,11 @@
         <div class="container">
             <div class="row row-lg-eq-height">
                 <!-- Main Content -->
-                
-                @yield('content')
+                <div class="col-lg-9">
+	                <div class="main_content">
+                        @yield('content')
+                    </div>
+                </div>
 
                 <!-- Sidebar -->
 

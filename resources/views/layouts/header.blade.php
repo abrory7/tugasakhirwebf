@@ -6,8 +6,8 @@
                     <div class="logo"><a href="#">avision</a></div>
                     <nav class="main_nav">
                         <ul>
-                            <li class="active"><a href="index.html">Home</a></li>
-                            <li><a href="#">Kategori</a></li>
+                            <li class="active"><a href="{{ route('index')}}">Home</a></li>
+                            <li><a href="{{ route('kategori') }}">Kategori</a></li>
                             <li><a href="#">Radio</a></li>
                             <li><a href="#">About</a></li>
                         </ul>
