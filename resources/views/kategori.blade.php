@@ -9,50 +9,44 @@
 		<div class="row clearfix">
             <!-- Small Card With Image -->
             <div class="card card_small_with_image grid-item" style="margin: 7px;">
-                <img src="{{ asset('res/images/post_2.jpg')}}" class="class-img-top">
+                <img src="{{ asset('res/images/supr.png')}}" style="width: 263px; height: 184px;">
                 <div class="card-body">
-                    <div class="card-title card-title-small"><a href="post.html">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
-                    <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
+                    <div class="card-title card-title-small text-center"><a href="post.html">SUPERNATURAL</a></div>
                 </div>
             </div>
             <!-- Small Card With Image -->
             <div class="card card_small_with_image grid-item" style="margin: 7px;">
                 <img src="{{ asset('res/images/post_2.jpg')}}" class="class-img-top">
                 <div class="card-body">
-                    <div class="card-title card-title-small"><a href="post.html">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
-                    <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
+                    <div class="card-title card-title-small text-center"><a href="post.html">POLITIK</a></div>
                 </div>
             </div>
             <!-- Small Card With Image -->
             <div class="card card_small_with_image grid-item" style="margin: 7px;">
                 <img src="{{ asset('res/images/post_2.jpg')}}" class="class-img-top">
                 <div class="card-body">
-                    <div class="card-title card-title-small"><a href="post.html">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
-                    <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
+                    <div class="card-title card-title-small text-center"><a href="post.html">ENTERTAINMENT</a></div>
                 </div>
             </div>
             <!-- Small Card With Image -->
             <div class="card card_small_with_image grid-item" style="margin: 7px;">
                 <img src="{{ asset('res/images/post_2.jpg')}}" class="class-img-top">
                 <div class="card-body">
-                    <div class="card-title card-title-small"><a href="post.html">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
-                    <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
+                    <div class="card-title card-title-small text-center"><a href="post.html">ANIMAL & PET</a></div>
                 </div>
             </div>
             <!-- Small Card With Image -->
             <div class="card card_small_with_image grid-item" style="margin: 7px;">
                 <img src="{{ asset('res/images/post_2.jpg')}}" class="class-img-top">
                 <div class="card-body">
-                    <div class="card-title card-title-small"><a href="post.html">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
-                    <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
+                    <div class="card-title card-title-small text-center"><a href="post.html">LOUNGE</a></div>
                 </div>
             </div>
             <!-- Small Card With Image -->
             <div class="card card_small_with_image grid-item" style="margin: 7px;">
                 <img src="{{ asset('res/images/post_2.jpg')}}" class="class-img-top">
                 <div class="card-body">
-                    <div class="card-title card-title-small"><a href="post.html">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
-                    <small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
+                    <div class="card-title card-title-small text-center"><a href="post.html">GAMES</a></div>
                 </div>
             </div>
         </div>
