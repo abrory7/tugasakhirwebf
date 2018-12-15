@@ -6,10 +6,10 @@
                     <div class="logo"><a href="#">avision</a></div>
                     <nav class="main_nav">
                         <ul>
-                            <li class="active"><a href="{{ route('index')}}">Home</a></li>
-                            <li><a href="{{ route('kategori') }}">Kategori</a></li>
-                            <li><a href="#">Radio</a></li>
-                            <li><a href="#">About</a></li>
+                            <li id="home"><a href="{{ route('index')}}">Home</a></li>
+                            <li id="kategori"><a href="{{ route('kategori') }}">Kategori</a></li>
+                            <li id="radio"><a href="{{ route('radio') }}">Radio</a></li>
+                            <li id="about"><a href="#">About</a></li>
                         </ul>
                     </nav>
                     <div class="search_container ml-auto">

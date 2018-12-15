@@ -58,3 +58,11 @@
 	</div>
 </div>
 @stop
+@section('script')
+<script>
+    $(document).ready(function()
+    {
+        $('#home').addClass('active');
+    });
+</script>
+@stop
