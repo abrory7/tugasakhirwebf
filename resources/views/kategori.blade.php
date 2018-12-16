@@ -47,7 +47,7 @@
                 <div class="card card_small_with_image grid-item font-weight-bold boxs" style="margin: 7px;">
                     <img src="{{ asset('res/images/pet.png')}}" style="width: 263px; height: 184px;">
                     <div class="card-body">
-                        <div class="card-title card-title-small text-center">ANIMAL & PET</div>
+                        <div class="card-title card-title-small text-center">ANIMALS & PETS</div>
                     </div>
                 </div>
             </a>
