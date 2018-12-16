@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('res/plugins/jquery.mb.YTPlayer-3.1.12/jquery.mb.YTPlayer.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('res/styles/main_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('res/styles/responsive.css') }}">
+    <script src="{{ asset('res/ckeditor/ckeditor.js') }}" ></script>
 </head>
 <body>
 
@@ -31,7 +32,7 @@
 
         <div class="page_content">
             <div class="container">
-                <div class="row row-lg-eq-height">
+                <div id="main-content" class="row row-lg-eq-height">
                     <!-- Main Content -->
                     <div id="content-container" class="col-lg-9">
                         <div class="main_content">
@@ -40,7 +41,7 @@
                     </div>
 
                     <!-- Sidebar -->
-                    @if($head == "kategori")
+                    @if($head == "kategori" or $head == "Buat Thread Baru")
 
                     @else
                     @include('layouts.sidebar')

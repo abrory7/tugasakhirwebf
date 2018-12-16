@@ -29,3 +29,5 @@ Route::get('/kategori/entertainment', 'link@entertainment')->name('entertainment
 Route::get('/kategori/animals-and-pet', 'link@animals')->name('animals');
 Route::get('/kategori/lounge', 'link@lounge')->name('lounge');
 Route::get('/kategori/games', 'link@games')->name('games');
+//BUAT THREAD ROUTE
+Route::get('/buatThread', 'forumController@buatThread')->name('buatPost');

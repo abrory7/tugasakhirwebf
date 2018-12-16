@@ -18,7 +18,7 @@
                     <div class="section_title">Thread Terpopuler</div>
                 </td>
                 <td align="right">
-                    <a href="#" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Buat Thread</a>
+                    <a href="{{ route('buatPost') }}" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Buat Thread</a>
                 </td>
             </tr>
         </table>
