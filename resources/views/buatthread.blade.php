@@ -8,6 +8,15 @@
     <div class="section_content">
     <form action="{{ route('newThread') }}" method="POST">
             {{ csrf_field() }}
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="form-group">
                 <label for="judul">Judul:</label>
                 <input type="text" class="form-control" id="judul" name="judul" required>
