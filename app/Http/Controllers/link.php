@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\threadpost;
 
 class link extends Controller
 {
@@ -43,5 +44,10 @@ class link extends Controller
     public function games()
     {
         return view('kategori.games');
+    }
+    public function threadlink($id)
+    {
+        $thread = threadpost::find($id);
+        return view('thread', compact('thread'));
     }
 }

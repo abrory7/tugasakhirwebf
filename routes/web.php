@@ -31,3 +31,5 @@ Route::get('/kategori/lounge', 'link@lounge')->name('lounge');
 Route::get('/kategori/games', 'link@games')->name('games');
 //BUAT THREAD ROUTE
 Route::get('/buatThread', 'forumController@buatThread')->name('buatPost');
+Route::get('/thread/{id}', 'link@threadlink')->name('thread');
+Route::post('/thread/create', 'insertDB@createThread')->name('newThread');

@@ -6,7 +6,8 @@
         <div class="section_title">Buat Thread Baru</div>
     </div>
     <div class="section_content">
-        <form>
+    <form action="{{ route('newThread') }}" method="POST">
+            {{ csrf_field() }}
             <div class="form-group">
                 <label for="judul">Judul:</label>
                 <input type="text" class="form-control" id="judul" name="judul" required>
@@ -23,7 +24,8 @@
             
             <div class="form-group">
                 <label for="isi">Isi:</label>
-                <input type="textarea" class="form-control" id="isi" name="isi" required>
+                <textarea class="form-control" id="isi" name="isi" required>
+                </textarea>
             </div>
             <button type="submit" class="btn btn-success">SUBMIT</button>             
         </form>

@@ -11,10 +11,10 @@ class threadpost extends Model
 
     public function userPoster()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id');
     }
     public function threadKategori()
     {
-        return $this->belongsTo('App\kategori');
+        return $this->belongsTo('App\kategori', 'kategori_id');
     }
 }
