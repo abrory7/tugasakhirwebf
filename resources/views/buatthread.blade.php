@@ -19,7 +19,7 @@
             @endif
             <div class="form-group">
                 <label for="judul">Judul:</label>
-                <input type="text" class="form-control" id="judul" name="judul" required>
+                <input type="text" class="form-control" id="judul" name="judul">
             </div>
             
             <div class="form-group">
@@ -33,7 +33,7 @@
             
             <div class="form-group">
                 <label for="isi">Isi:</label>
-                <textarea class="form-control" id="isi" name="isi" required>
+                <textarea class="form-control" id="isi" name="isi">
                 </textarea>
             </div>
             <button type="submit" class="btn btn-success">SUBMIT</button>             

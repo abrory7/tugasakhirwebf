@@ -17,7 +17,7 @@ class insertDB extends Controller
         $thread->isi = $request->input('isi');
         $validation = $request->validate([
             'judul' => 'required|min:10',
-            'isi' => 'required|min:5'
+            'isi' => 'required|min:10'
         ]);
         $thread->save();
         return redirect()->route('thread', $thread->id)->with('alertsuccess', 'Data berhasil ditambahkan');
