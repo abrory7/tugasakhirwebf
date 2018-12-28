@@ -22,4 +22,17 @@ class insertDB extends Controller
         $thread->save();
         return redirect()->route('thread', $thread->id)->with('alertsuccess', 'Data berhasil ditambahkan');
     }
+    public function newReply(Request $request)
+    {
+        
+        $reply = new \App\comments();
+        $reply->user_id = Auth::user()->id;
+        $reply->posts_id = $request->input('idThread');
+        $reply->komentar = $request->input('balasan');
+        $validation = $request->validate([
+            'balasan' => 'required|min:10'
+        ]);
+        $reply->save();
+        return redirect()->route('thread', $request->input('idThread'))->with('alertsuccess', 'Data berhasil ditambahkan');
+    }
 }

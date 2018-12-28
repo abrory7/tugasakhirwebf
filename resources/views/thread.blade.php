@@ -32,19 +32,43 @@
 
         <div class="page_content">
             <div class="container">
-                <div id="main-content" class="row row-lg-eq-height">
+                <div id="main-content" class="row-lg-eq-height">
                     <!-- Main Content -->
                     <div id="content-container">
-                        <div class="main_content">
-                            <div class="blog_section">
-                                <div class="section_panel d-flex flex-row align-items-center justify-content-start">
-                                    <div class="section_title">Thread Terpopuler</div>
-                                </div>
-                                <?php $head = $thread->judul; ?><!-- Title tab thread -->
-                                <h2>{{ $thread->judul }} - {{ $thread->threadKategori->namakategori }}</h2>
-                                <h5>{{ $thread->created_at}} - {{ $thread->userPoster->username }}</h5>
-                                {!! $thread->isi !!}
-                            </div>
+                        <div class="section_panel d-flex flex-row align-items-center justify-content-start" style="margin-top: 5%">
+                            <table width="100%" style="border: none;">
+                                <tr>
+                                    <td>
+                                        <div class="section_title">{{ $thread->judul }}</div>
+                                    </td>
+                                    <td align="right">
+                                        <a href="{{ url('/thread/'.$thread->id.'/reply') }}" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Balas Thread</a>
+                                        <a href="{{ route('buatPost') }}" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Thread</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <?php $head = $thread->judul; ?><!-- Title tab thread -->
+                        <div class="card" style="border: 0; border-radius: 7px;">
+                            <table width="auto">
+                                <tbody>
+                                    <tr>
+                                        <td width="17%" style="padding-left: 1%; background-color: azure; border:0; border-radius: 7px;">
+                                            {{ $thread->userPoster->username }}
+                                            <br>
+                                            {{ $thread->created_at}}
+                                            <br>
+                                            Post: {{ $thread->userPoster->totalpost}}
+                                            <br>
+                                            Rep: {{ $thread->userPoster->reputasi }}
+                                        </td>
+                                        <td style="padding: 1% 0 1% 2%">
+                                            <h2>{{ $thread->judul }} - {{ $thread->threadKategori->namakategori }}sad asd asd asdsa</h2>
+                                            {!! $thread->isi !!}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

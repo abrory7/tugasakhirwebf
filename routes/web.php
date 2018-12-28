@@ -33,3 +33,5 @@ Route::get('/kategori/games', 'link@games')->name('games');
 Route::get('/buatThread', 'forumController@buatThread')->name('buatPost');
 Route::get('/thread/{id}', 'link@threadlink')->name('thread');
 Route::post('/thread/create', 'insertDB@createThread')->name('newThread');
+Route::get('thread/{id}/reply', ['uses' => 'link@reply']);
+Route::post('/thread/createReply', 'insertDB@newReply')->name('newReply');

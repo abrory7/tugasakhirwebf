@@ -32,4 +32,8 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\threadpost');
     }
+    public function userReply()
+    {
+        return $this->hasMany('App\comments');
+    }
 }

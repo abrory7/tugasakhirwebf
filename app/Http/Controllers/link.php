@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\threadpost;
+use App\comments;
 
 class link extends Controller
 {
@@ -55,5 +56,10 @@ class link extends Controller
     {
         $thread = threadpost::find($id);
         return view('thread', compact('thread'));
+    }
+    public function reply($id)
+    {
+        $threadID = threadpost::find($id);
+        return view('reply', compact('threadID'));
     }
 }

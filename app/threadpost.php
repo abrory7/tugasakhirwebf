@@ -9,6 +9,10 @@ class threadpost extends Model
     protected $table = 'posts';
     protected $fillable = ['user_id', 'kategori_id', 'judul', 'isi', 'created_at', 'updated_at'];
 
+    public function thread()
+    {
+        return $this->hasMany('App\comments');
+    }
     public function userPoster()
     {
         return $this->belongsTo('App\User', 'user_id');
