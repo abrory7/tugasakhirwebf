@@ -11,7 +11,8 @@ class link extends Controller
     //HOME
     public function index()
     {
-        return view('homeforum');
+        $hotThread = threadpost::latest()->take(5)->get();
+        return view('homeforum', compact('hotThread'));
     }
     public function kategori()
     {
@@ -55,7 +56,7 @@ class link extends Controller
     public function threadlink($id)
     {
         $thread = threadpost::find($id);
-        $reply = comments::oldest()->paginate(10);
+        $reply = comments::oldest()->where('posts_id', '=', $thread->id)->paginate(7);
         return view('thread', compact('thread', 'reply'));
     }
     public function reply($id)

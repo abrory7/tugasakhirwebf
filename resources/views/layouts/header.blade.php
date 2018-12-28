@@ -14,6 +14,7 @@
                     </nav>
                     <div class="search_container ml-auto">
                         <div class="weather">
+                            <a href="#" class="btn btn-success">{{ Auth::user()->username }}</a>
                             <div class="temperature">+10°</div>
                             <img class="weather_icon" src="{{ asset('res/images/cloud.png') }}" alt="">
                         </div>

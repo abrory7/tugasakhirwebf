@@ -11,15 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('homeforum');
-});
+Route::get('/', ['uses' => 'link@index'])->name('index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 //HOME ROUTE
-Route::get('/', 'link@index')->name('index');
 Route::get('/kategori', 'link@kategori')->name('kategori');
 Route::get('/radio', 'link@radio')->name('radio');
 //KATEGORI ROUTE

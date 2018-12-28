@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\threadpost;
 
 class HomeController extends Controller
 {
@@ -25,5 +26,6 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    
     
 }

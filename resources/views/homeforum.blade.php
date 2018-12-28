@@ -19,41 +19,16 @@
 		<div class="clearfix">
 
 			<!-- Largest Card With Image -->
+			@foreach($hotThread as $hot)
 			<div class="card">
 				<!-- <img class="card-img-top" src="{{ asset('res/images/post_1.jpg') }}" alt="https://unsplash.com/@cjtagupa"> -->
 				<div class="card-body">
-					<div class="card-title"><a href="post.html"><h4>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h4></a></div>
+				<div class="card-title"><a href="{{ url('/thread/'.$hot->id) }}"><h4>{{ $hot->judul }}</h4></a></div>
 					<hr>
-					<small><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span><span class="tag bg-secondary text-white">testasdasdasdsadas</span></small>
+				<small><a href="#">{{ $hot->userPoster->username }}</a><span>{{ $hot->created_at }}</span><span class="tag bg-secondary text-white">{{ $hot->threadKategori->namakategori }}</span></small>
 				</div>
 			</div>
-			<!-- Largest Card With Image -->
-			<div class="card">
-				<!-- <img class="card-img-top" src="{{ asset('res/images/post_1.jpg') }}" alt="https://unsplash.com/@cjtagupa"> -->
-				<div class="card-body">
-					<div class="card-title"><a href="post.html"><h4>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h4></a></div>
-					<hr>
-					<small><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span><span class="tag bg-secondary text-white">testasdasdasdsadas</span></small>
-				</div>
-			</div>
-			<!-- Largest Card With Image -->
-			<div class="card">
-				<!-- <img class="card-img-top" src="{{ asset('res/images/post_1.jpg') }}" alt="https://unsplash.com/@cjtagupa"> -->
-				<div class="card-body">
-					<div class="card-title"><a href="post.html"><h4>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h4></a></div>
-					<hr>
-					<small><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span><span class="tag bg-secondary text-white">testasdasdasdsadas</span></small>
-				</div>
-			</div>
-			<!-- Largest Card With Image -->
-			<div class="card">
-				<!-- <img class="card-img-top" src="{{ asset('res/images/post_1.jpg') }}" alt="https://unsplash.com/@cjtagupa"> -->
-				<div class="card-body">
-					<div class="card-title"><a href="post.html"><h4>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h4></a></div>
-					<hr>
-					<small><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span><span class="tag bg-secondary text-white">testasdasdasdsadas</span></small>
-				</div>
-			</div>
+			@endforeach
 		</div>
 	</div>
 </div>

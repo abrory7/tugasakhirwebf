@@ -44,31 +44,45 @@
                                     <td align="right">
                                         <a href="{{ url('/thread/'.$thread->id.'/reply') }}" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Balas Thread</a>
                                         <a href="{{ route('buatPost') }}" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Thread</a>
+                                        {{ $reply->links() }}
                                     </td>
                                 </tr>
                             </table>
                         </div>
                         <?php $head = $thread->judul; ?><!-- Title tab thread -->
-                        <div class="card" style="border: 0; border-radius: 7px;">
-                            <table width="auto">
-                                <tbody>
-                                    <tr>
-                                        <td width="193.8px" style="vertical-align: top; text-align: left; padding-left: 1%; background-color: azure; border:0; border-radius: 7px;">
-                                            {{ $thread->userPoster->username }}
-                                            <br>
-                                            {{ $thread->userPoster->created_at}}
-                                            <br>
-                                            Post: {{ $thread->userPoster->totalpost }}
-                                            <br>
-                                            Rep: {{ $thread->userPoster->reputasi }}
-                                        </td>
-                                        <td style="padding: 11.5px 0 11.5px 20px">
-                                            <h2>{{ $thread->judul }} - {{ $thread->threadKategori->namakategori }}</h2>
-                                            {!! $thread->isi !!}asdasd<br>s<br>a<br>s<br>d<br>f<br>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div id="accordion">
+                            <div class="card">
+                                <div class="card-header">
+                                    <a class="card-link" data-toggle="collapse" href="#onePost">
+                                        #1 Thread Starter
+                                    </a>
+                                </div>
+                                <div id="onePost" class="collapse show" data-parent="#accordion">
+                                    <div class="card-body" style="padding: 0;">
+                                            <div class="card" style="margin-top: 0; border: 0; border-radius: 7px; background-color: #ffffff; color: black;">
+                                                <table width="auto">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="193.8px" style="vertical-align: top; text-align: left; padding-left: 1%; background-color: azure; border:0; border-radius: 7px;">
+                                                                {{ $thread->userPoster->username }}
+                                                                <br>
+                                                                {{ $thread->userPoster->created_at}}
+                                                                <br>
+                                                                Post: {{ $thread->userPoster->totalpost }}
+                                                                <br>
+                                                                Rep: {{ $thread->userPoster->reputasi }}
+                                                            </td>
+                                                            <td style="padding: 11.5px 0 11.5px 20px;">
+                                                                <h2>{{ $thread->judul }} - {{ $thread->threadKategori->namakategori }}</h2>
+                                                                {!! $thread->isi !!}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         @foreach($reply as $komentar)
                         <div class="card" style="border: 0; border-radius: 7px;">
@@ -144,7 +158,15 @@
         </footer>
     </div>
     
-    
+    <script src="{{ asset('res/js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('res/styles/bootstrap4/popper.js') }}"></script>
+    <script src="{{ asset('res/styles/bootstrap4/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('res/plugins/OwlCarousel2-2.2.1/owl.carousel.js') }}"></script>
+    <script src="{{ asset('res/plugins/jquery.mb.YTPlayer-3.1.12/jquery.mb.YTPlayer.js') }}"></script>
+    <script src="{{ asset('res/plugins/easing/easing.js') }}"></script>
+    <script src="{{ asset('res/plugins/masonry/masonry.js') }}"></script>
+    <script src="{{ asset('res/plugins/masonry/images_loaded.js') }}"></script>
+    <script src="{{ asset('res/js/custom.js') }}"></script>
 </body>
 </html>
             
