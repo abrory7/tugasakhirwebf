@@ -55,7 +55,8 @@ class link extends Controller
     public function threadlink($id)
     {
         $thread = threadpost::find($id);
-        return view('thread', compact('thread'));
+        $reply = comments::oldest()->paginate(10);
+        return view('thread', compact('thread', 'reply'));
     }
     public function reply($id)
     {

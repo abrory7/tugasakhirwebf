@@ -53,23 +53,48 @@
                             <table width="auto">
                                 <tbody>
                                     <tr>
-                                        <td width="17%" style="padding-left: 1%; background-color: azure; border:0; border-radius: 7px;">
+                                        <td width="193.8px" style="vertical-align: top; text-align: left; padding-left: 1%; background-color: azure; border:0; border-radius: 7px;">
                                             {{ $thread->userPoster->username }}
                                             <br>
-                                            {{ $thread->created_at}}
+                                            {{ $thread->userPoster->created_at}}
                                             <br>
-                                            Post: {{ $thread->userPoster->totalpost}}
+                                            Post: {{ $thread->userPoster->totalpost }}
                                             <br>
                                             Rep: {{ $thread->userPoster->reputasi }}
                                         </td>
-                                        <td style="padding: 1% 0 1% 2%">
-                                            <h2>{{ $thread->judul }} - {{ $thread->threadKategori->namakategori }}sad asd asd asdsa</h2>
-                                            {!! $thread->isi !!}
+                                        <td style="padding: 11.5px 0 11.5px 20px">
+                                            <h2>{{ $thread->judul }} - {{ $thread->threadKategori->namakategori }}</h2>
+                                            {!! $thread->isi !!}asdasd<br>s<br>a<br>s<br>d<br>f<br>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
+                        @foreach($reply as $komentar)
+                        <div class="card" style="border: 0; border-radius: 7px;">
+                            <table width="auto">
+                                <tbody>
+                                    <tr>
+                                        <td width="193.8px" style="vertical-align: top; text-align: left; padding-left: 8.95px; background-color: azure; border:0; border-radius: 7px;">
+                                            {{ $komentar->userReply->username }}
+                                            <br>
+                                            {{ $komentar->userReply->created_at }}
+                                            <br>
+                                            Post: {{ $komentar->userReply->totalpost }}
+                                            <br>
+                                            Rep: {{ $komentar->userReply->reputasi }}
+                                        </td>
+                                        <td style="padding: 11.5px 0 11.5px 20px">
+                                                {!! $komentar->komentar !!}
+                                            <div style="border-top: 1px solid gray; margin-top: 20%">
+                                                <small>{{ $komentar->created_at }}</small>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
