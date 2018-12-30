@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\threadpost;
 use App\comments;
+use App\User;
+use Auth;
 
 class link extends Controller
 {
@@ -21,6 +23,23 @@ class link extends Controller
     public function radio()
     {
         return view('radio');
+    }
+    public function profil($id)
+    {
+        $profil = User::find($id);
+        return view('profil', compact('profil'));
+    }
+    public function editprofil($id)
+    {
+        $editprofil = User::find($id);
+        if($editprofil->id != Auth::user()->id)
+        {
+            return redirect()->route('index');
+        }
+        else
+        {
+            return view('editprofil', compact('editprofil'));
+        }
     }
     //KATEGORI
     public function animals()

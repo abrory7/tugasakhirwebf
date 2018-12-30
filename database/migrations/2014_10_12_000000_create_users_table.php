@@ -21,9 +21,10 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('jeniskelamin');
             $table->text('alamat')->nullable();
-            $table->text('foto')->nullable();
+            $table->string('foto')->nullable()->default('default.png');
             $table->text('bio')->nullable();
-            $table->integer('reputasi')->nullable();
+            $table->integer('reputasi')->nullable()->default('0');
+            $table->integer('totalpost')->nullable()->default('0');
             $table->integer('userlevel_id')->unsigned();
             $table->foreign('userlevel_id')->references('id')->on('userlevel');
             $table->rememberToken();

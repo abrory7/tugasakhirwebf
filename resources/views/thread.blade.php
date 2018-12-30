@@ -1,3 +1,5 @@
+<?php use Carbon\Carbon;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,12 +41,18 @@
                             <table width="100%" style="border: none;">
                                 <tr>
                                     <td>
-                                        <div class="section_title">{{ $thread->judul }}</div>
+                                    <div class="section_title">
+                                        <i class="fa fa-home"></i> <a href="{{ route('index') }}">Home</a> &gt;&nbsp;
+                                                                    {{ $thread->threadKategori->namakategori }} &gt;&nbsp;
+                                                                    {{ $thread->judul }}
+                                    </div>
                                     </td>
                                     <td align="right">
+                                        @guest
+                                        @else
                                         <a href="{{ url('/thread/'.$thread->id.'/reply') }}" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Balas Thread</a>
                                         <a href="{{ route('buatPost') }}" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Thread</a>
-                                        {{ $reply->links() }}
+                                        @endif
                                     </td>
                                 </tr>
                             </table>
@@ -54,7 +62,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <a class="card-link" data-toggle="collapse" href="#onePost">
-                                        #1 Thread Starter
+                                        #1 Thread Starter - {{ \Carbon\Carbon::parse($thread->created_at)->format('j F Y H:i:s') }}
                                     </a>
                                 </div>
                                 <div id="onePost" class="collapse show" data-parent="#accordion">
@@ -64,16 +72,22 @@
                                                     <tbody>
                                                         <tr>
                                                             <td width="193.8px" style="vertical-align: top; text-align: left; padding-left: 1%; background-color: azure; border:0; border-radius: 7px;">
-                                                                {{ $thread->userPoster->username }}
+                                                                <img src="{{ asset('res/images/profil/'.$thread->userPoster->foto) }}" 
+                                                                width="128px" height="128px" style="margin: 10px 0 0 0;">
                                                                 <br>
-                                                                {{ $thread->userPoster->created_at}}
+                                                                <a href="{{ url('/profil/'.$thread->userPoster->id) }}" >
+                                                                    {{ $thread->userPoster->username }}
+                                                                </a>
+                                                                <br>
+                                                                Since: {{ \Carbon\Carbon::parse($thread->userPoster->created_at)->format('F Y') }}
                                                                 <br>
                                                                 Post: {{ $thread->userPoster->totalpost }}
                                                                 <br>
                                                                 Rep: {{ $thread->userPoster->reputasi }}
                                                             </td>
-                                                            <td style="padding: 11.5px 0 11.5px 20px;">
-                                                                <h2>{{ $thread->judul }} - {{ $thread->threadKategori->namakategori }}</h2>
+                                                            <td width="927px" style="padding: 11.5px 0 11.5px 20px;">
+                                                                <h2>{{ $thread->judul }}</h2>
+                                                                <hr>
                                                                 {!! $thread->isi !!}
                                                             </td>
                                                         </tr>
@@ -84,24 +98,36 @@
                                 </div>
                             </div>
                         </div>
+                        <?php $no = 2; ?>
                         @foreach($reply as $komentar)
                         <div class="card" style="border: 0; border-radius: 7px;">
                             <table width="auto">
                                 <tbody>
+                                    <col width="193px"/>
+                                    <col width="947px"/>
                                     <tr>
-                                        <td width="193.8px" style="vertical-align: top; text-align: left; padding-left: 8.95px; background-color: azure; border:0; border-radius: 7px;">
+                                        <td colspan="2" style="background-color: aqua; border: 0; border-radius: 7px 7px 0 0; padding-left: 8.95px;">
+                                                #{{ (($reply->currentPage()-1) * $reply->perPage()) + $no++ }}
+                                                &nbsp;
+                                                {{ \Carbon\Carbon::parse($komentar->created_at)->format('d-m-Y H:i:s') }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="vertical-align: top; text-align: left; padding-left: 8.95px; background-color: azure; border:0; border-radius: 7px;">
+                                             <img src="{{ asset('res/images/profil/'.$thread->userPoster->foto) }}" 
+                                            width="128px" height="128px" style="margin: 10px 0 0 0;">
+                                            <br>
                                             {{ $komentar->userReply->username }}
                                             <br>
-                                            {{ $komentar->userReply->created_at }}
+                                            Since: {{ \Carbon\Carbon::parse($komentar->userReply->created_at)->format('F Y') }}
                                             <br>
                                             Post: {{ $komentar->userReply->totalpost }}
                                             <br>
                                             Rep: {{ $komentar->userReply->reputasi }}
                                         </td>
-                                        <td style="padding: 11.5px 0 11.5px 20px">
+                                        <td style="padding: 11.5px 0 11.5px 0">
+                                            <div style="padding-left: 20px">
                                                 {!! $komentar->komentar !!}
-                                            <div style="border-top: 1px solid gray; margin-top: 20%">
-                                                <small>{{ $komentar->created_at }}</small>
                                             </div>
                                         </td>
                                     </tr>
@@ -109,6 +135,7 @@
                             </table>
                         </div>
                         @endforeach
+                        <br>{{ $reply->links() }}
                     </div>
                 </div>
             </div>

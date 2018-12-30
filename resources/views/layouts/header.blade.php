@@ -14,9 +14,21 @@
                     </nav>
                     <div class="search_container ml-auto">
                         <div class="weather">
-                            <a href="#" class="btn btn-success">{{ Auth::user()->username }}</a>
-                            <div class="temperature">+10°</div>
-                            <img class="weather_icon" src="{{ asset('res/images/cloud.png') }}" alt="">
+                            @guest
+                            <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+                            <a href="{{ route('register') }}" class="btn btn-secondary">Register</a>
+                            @else
+                            <a href="{{ url('/profil/'.Auth::user()->id) }}" class="btn btn-success">{{ Auth::user()->username }}</a>
+                            <a href="{{ route('logout') }}" class="btn btn-danger"
+                            onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                            @endif
                         </div>
                         <form action="#">
                             <input type="search" class="header_search_input" required="required" placeholder="Type to Search...">

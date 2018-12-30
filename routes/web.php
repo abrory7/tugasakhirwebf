@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', ['uses' => 'link@index'])->name('index');
+Route::get('/', 'link@index')->name('index');
 
 Auth::routes();
 
@@ -19,6 +19,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 //HOME ROUTE
 Route::get('/kategori', 'link@kategori')->name('kategori');
 Route::get('/radio', 'link@radio')->name('radio');
+Route::get('/profil/{id}', 'link@profil')->name('profil');
+Route::get('profil/{id}/edit', ['uses' => 'link@editprofil']);
 //KATEGORI ROUTE
 Route::get('/kategori/supernatural', 'link@supernatural')->name('supernatural');
 Route::get('/kategori/politik', 'link@politik')->name('politik');
