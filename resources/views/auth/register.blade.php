@@ -1,3 +1,4 @@
+<?php $head = "Register";?>
 @extends('layouts.app')
 
 @section('content')

@@ -3,13 +3,13 @@
         <div class="row">
             <div class="col">
                 <div class="header d-flex flex-row align-items-center justify-content-start">
-                    <div class="logo"><a href="#">avision</a></div>
+                    <div class="logo"><a href="{{ route('index') }}">ULM FORUM</a></div>
                     <nav class="main_nav">
                         <ul>
                             <li id="home"><a href="{{ route('index')}}">Home</a></li>
                             <li id="kategori"><a href="{{ route('kategori') }}">Kategori</a></li>
                             <li id="radio"><a href="{{ route('radio') }}">Radio</a></li>
-                            <li id="about"><a href="#">About</a></li>
+                            <li id="about"><a href="{{ route('about') }}">About</a></li>
                         </ul>
                     </nav>
                     <div class="search_container ml-auto">
@@ -30,10 +30,7 @@
                             </form>
                             @endif
                         </div>
-                        <form action="#">
-                            <input type="search" class="header_search_input" required="required" placeholder="Type to Search...">
-                            <img class="header_search_icon" src="{{ asset('res/images/search.png') }}" alt="">
-                        </form>
+                        
                         
                     </div>
                     <div class="hamburger ml-auto menu_mm">
@@ -49,7 +46,7 @@
 
 <div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
     <div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
-    <div class="logo menu_mm"><a href="#">Avision</a></div>
+    <div class="logo menu_mm"><a href="{{ route('index') }}">ULM Forum</a></div>
     <div class="search">
         <form action="#">
             <input type="search" class="header_search_input menu_mm" required="required" placeholder="Type to Search...">
@@ -58,12 +55,10 @@
     </div>
     <nav class="menu_nav">
         <ul class="menu_mm">
-            <li class="menu_mm"><a href="index.html">home</a></li>
-            <li class="menu_mm"><a href="#">Fashion</a></li>
-            <li class="menu_mm"><a href="#">Gadgets</a></li>
-            <li class="menu_mm"><a href="#">Lifestyle</a></li>
-            <li class="menu_mm"><a href="#">Video</a></li>
-            <li class="menu_mm"><a href="contact.html">Contact</a></li>
+            <li id="home"><a href="{{ route('index')}}">Home</a></li>
+            <li id="kategori"><a href="{{ route('kategori') }}">Kategori</a></li>
+            <li id="radio"><a href="{{ route('radio') }}">Radio</a></li>
+            <li id="about"><a href="{{ route('about') }}">About</a></li>
         </ul>
     </nav>
 </div>

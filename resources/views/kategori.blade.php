@@ -1,4 +1,4 @@
-<?php $head = "kategori"; ?>
+<?php $head = "Kategori"; ?>
 @extends('layouts.base')
 @section('content')
 <style>

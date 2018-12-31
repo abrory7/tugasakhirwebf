@@ -1,4 +1,4 @@
-<?php $head = "Buat Thread Baru"; ?>
+<?php $head = "Edit Profil"; ?>
 @extends('layouts.base')
 @section('content')
 <div class="container" style="margin-top: 10%">
@@ -6,8 +6,8 @@
         <div class="section_title">Edit Profil</div>
     </div>
     <div class="section_content card p-4">
-    <form action="" method="POST" enctype="multipart/form-data">
-            {{ csrf_field() }}
+    <form action="{{ route('updateProfil') }}" method="POST" enctype="multipart/form-data">
+            @csrf
             @method('PUT')
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -20,8 +20,11 @@
             @endif
             <div class="form-group">
                 <label for="foto">Foto Profil:</label>
-                <input type="file" class="form-control" id="foto" name="foto" accept="image/*" required>
-                Foto sebelumnya: <img src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png" width="100px" height="100px">
+                <input type="file" class="form-control" id="foto" name="foto" accept="image/*">
+                Foto sebelumnya:
+                <br>
+                <img src="{{ asset('res/images/profil/'.$editprofil->foto) }}"
+                width="100px" height="100px">
             </div>
             <div class="form-group">
                 <label for="alamat">Alamat:</label>

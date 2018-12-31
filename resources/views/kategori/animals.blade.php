@@ -1,4 +1,4 @@
-<?php $head = "Animals & Pets"; ?>
+<?php $head = "Animals and Pets"; ?>
 @extends('layouts.base')
 @section('content')
 <style>
@@ -15,11 +15,13 @@
         <table width="100%" style="border: none;">
             <tr>
                 <td>
-                    <div class="section_title">Thread Terpopuler</div>
+                    <div class="section_title">Animals & Pets</div>
                 </td>
                 <td align="right">
+					@if(Auth::check())
                     <a href="{{ route('buatPost') }}" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Buat Thread</a>
-                </td>
+					@endif
+				</td>
             </tr>
         </table>
 	</div>
@@ -30,7 +32,7 @@
 				<div class="card-body">
 				<div class="card-title"><a href="{{ url('/thread/'.$tampil->id)}}"><h4>{{ $tampil->judul }}</h4></a></div>
 					<hr>
-				<small><a href="#">{{ $tampil->userPoster->username }}</a>&nbsp;-&nbsp;<span>{{ $tampil->created_at }}</span></small>
+				<small><a href="#">{{ $tampil->userPoster->username }}</a>&nbsp;-&nbsp;<span>{{ \Carbon\Carbon::parse($tampil->created_at)->format('d-m-Y H:i:s') }}</span>&nbsp;-&nbsp;<i class="fa fa-eye"></i> {{ $tampil->totalview }}</small>
 				</div>
 			</div>
 			@endforeach

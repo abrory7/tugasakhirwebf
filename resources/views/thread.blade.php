@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>test</title>
+    <title>{{ $thread->judul }} | ULM Forum</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Demo project">
@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('res/plugins/jquery.mb.YTPlayer-3.1.12/jquery.mb.YTPlayer.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('res/styles/main_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('res/styles/responsive.css') }}">
+    <link rel="shortcut icon" type="image/jpg" href="{{ asset('res/images/favicon.jpg') }}"/>
     <script src="{{ asset('res/ckeditor/ckeditor.js') }}" ></script>
 </head>
 <body>
@@ -50,8 +51,20 @@
                                     <td align="right">
                                         @guest
                                         @else
-                                        <a href="{{ url('/thread/'.$thread->id.'/reply') }}" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Balas Thread</a>
-                                        <a href="{{ route('buatPost') }}" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Thread</a>
+                                            @if (Auth::user()->userlevel_id == '1' || Auth::user()->userlevel_id == '2' || Auth::user()->id == $thread->userPoster->id)
+                                                <form action="{{ route('hapusThread', $thread->id) }}" method="post" style="display: inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus thread ini?')">
+                                                        <i class="fa fa-trash"></i> Hapus Thread</button>
+                                                </form>
+                                            @else
+                                            @endif
+                                            <a href="{{ url('/thread/'.$thread->id.'/reply') }}" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Balas Thread</a>
+                                            @if (Auth::user()->userlevel_id == '1' || Auth::user()->userlevel_id == '2' || Auth::user()->id == $thread->userPoster->id)
+                                                <a href="{{ url('/thread/'.$thread->id.'/edit') }}" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Thread</a>
+                                            @else
+                                            @endif
                                         @endif
                                     </td>
                                 </tr>
@@ -84,6 +97,26 @@
                                                                 Post: {{ $thread->userPoster->totalpost }}
                                                                 <br>
                                                                 Rep: {{ $thread->userPoster->reputasi }}
+                                                                <br>
+                                                                @guest
+                                                                @else
+                                                                @if(Auth::user()->id != $thread->userPoster->id)
+                                                                <form action="{{ route('turunreputasi', $thread->userPoster->id) }}" method="post" style="display: inline;">
+                                                                    @csrf
+                                                                    @method('put')
+                                                                    <input type="hidden" id="threadID" name="threadID" value="{{ $thread->id }}">
+                                                                    <button class="btn btn-danger" onclick="return confirm('Apa anda yakin ingin mengurangi reputasi user ini?')">
+                                                                        <i class="fa fa-thumbs-down"></i></button>
+                                                                </form>
+                                                                <form action="{{ route('tambahreputasi', $thread->userPoster->id) }}" method="post" style="display: inline;">
+                                                                    @csrf
+                                                                    @method('put')
+                                                                    <input type="hidden" id="threadID" name="threadID" value="{{ $thread->id }}">
+                                                                    <button class="btn btn-success" onclick="return confirm('Apa anda yakin ingin menambahkan reputasi user ini?')">
+                                                                        <i class="fa fa-thumbs-up"></i></button>
+                                                                </form>
+                                                                @endif
+                                                                @endif
                                                             </td>
                                                             <td width="927px" style="padding: 11.5px 0 11.5px 20px;">
                                                                 <h2>{{ $thread->judul }}</h2>
@@ -107,9 +140,25 @@
                                     <col width="947px"/>
                                     <tr>
                                         <td colspan="2" style="background-color: aqua; border: 0; border-radius: 7px 7px 0 0; padding-left: 8.95px;">
-                                                #{{ (($reply->currentPage()-1) * $reply->perPage()) + $no++ }}
-                                                &nbsp;
-                                                {{ \Carbon\Carbon::parse($komentar->created_at)->format('d-m-Y H:i:s') }}
+                                            <table>
+                                                <col width="193px"/>
+                                                <col width="920px"/>
+                                                <tr>
+                                                    <td>
+                                                        #{{ (($reply->currentPage()-1) * $reply->perPage()) + $no++ }}
+                                                        &nbsp;
+                                                        {{ \Carbon\Carbon::parse($komentar->created_at)->format('d-m-Y H:i:s') }}
+                                                    </td>
+                                                    <td align="right">
+                                                        @guest
+                                                        @elseif(Auth::user()->id == $komentar->userReply->id)
+                                                        <a href="{{ url('/thread/'.$thread->id.'/editReply/'.$komentar->id) }}" class="btn btn-secondary">
+                                                            <i class="fa fa-reply"></i> Edit Reply
+                                                        </a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            </table>
                                         </td>
                                     </tr>
                                     <tr>
@@ -117,13 +166,35 @@
                                              <img src="{{ asset('res/images/profil/'.$thread->userPoster->foto) }}" 
                                             width="128px" height="128px" style="margin: 10px 0 0 0;">
                                             <br>
-                                            {{ $komentar->userReply->username }}
+                                            <a href="{{ url('/profil/'.$komentar->userReply->id) }}">
+                                                {{ $komentar->userReply->username }}
+                                            </a>
                                             <br>
                                             Since: {{ \Carbon\Carbon::parse($komentar->userReply->created_at)->format('F Y') }}
                                             <br>
                                             Post: {{ $komentar->userReply->totalpost }}
                                             <br>
                                             Rep: {{ $komentar->userReply->reputasi }}
+                                            <br>
+                                            @guest
+                                            @else
+                                                @if(Auth::user()->id != $komentar->userReply->id)
+                                                <form action="{{ route('turunreputasi', $komentar->userReply->id) }}" method="post" style="display: inline;">
+                                                    @csrf
+                                                    @method('put')
+                                                    <input type="hidden" id="threadID" name="threadID" value="{{ $thread->id }}">
+                                                    <button class="btn btn-danger" onclick="return confirm('Apa anda yakin ingin mengurangi reputasi user ini?');">
+                                                        <i class="fa fa-thumbs-down"></i></button>
+                                                </form>
+                                                <form action="{{ route('tambahreputasi', $komentar->userReply->id) }}" method="post" style="display: inline;">
+                                                    @csrf
+                                                    @method('put')
+                                                    <input type="hidden" id="threadID" name="threadID" value="{{ $thread->id }}">
+                                                    <button class="btn btn-success" onclick="return confirm('Apakah anda yakin ingin menambahkan reputasi user ini?');">
+                                                        <i class="fa fa-thumbs-up"></i></button>
+                                                </form>
+                                                @endif
+                                            @endif
                                         </td>
                                         <td style="padding: 11.5px 0 11.5px 0">
                                             <div style="padding-left: 20px">
@@ -145,9 +216,9 @@
         <footer class="footer" style="margin-top: 10%">
             <div class="container">
                 <div class="row row-lg-eq-height">
-                    <div class="col-lg-9 order-lg-1 order-2">
+                    <div class="col-lg-12 order-lg-1 order-2">
                         <div class="footer_content">
-                            <div class="footer_logo"><a href="#">avision</a></div>
+                            <div class="footer_logo"><a href="{{ route('index') }}">ULM Forum</a></div>
                             <div class="footer_social">
                                 <ul>
                                     <li class="footer_social_facebook"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -161,23 +232,6 @@
                             <div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
         Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 order-lg-2 order-1">
-                        <div class="subscribe">
-                            <div class="subscribe_background"></div>
-                            <div class="subscribe_content">
-                                <div class="subscribe_title">Subscribe</div>
-                                <form action="#">
-                                    <input type="email" class="sub_input" placeholder="Your Email" required="required">
-                                    <button class="sub_button">
-                                        <svg version="1.1" id="link_arrow_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                width="19px" height="13px" viewBox="0 0 19 13" enable-background="new 0 0 19 13" xml:space="preserve">
-                                            <polygon fill="#FFFFFF" points="12.475,0 11.061,0 17.081,6.021 0,6.021 0,7.021 17.038,7.021 11.06,13 12.474,13 18.974,6.5 "/>
-                                        </svg>
-                                    </button>
-                                </form>
-                            </div>
                         </div>
                     </div>
                 </div>
